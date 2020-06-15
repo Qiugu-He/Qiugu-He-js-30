@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway:wght@400;600&display=swap');
+
+body {
+    background:white; 
+}
+
+h1 {
+font-size: 5vmax;
+text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+font-family: 'Poppins', sans-serif;
+padding-bottom: 20px;
+color:#595959;
+}
+  
+h2 {
+    font-size: 1.3em;
+    font-family: 'Poppins', sans-serif;
+}
+  
+a {
+    font-size: 1em;
+    color: white;
+}
+  
+h4,p {
+    color: black;
+}
+
+a:hover, a:visited  {
+    color: white;
+}
+
+.heading {
+text-align: center;
+margin-top: 40px;
+}
+
+/* Card View Settings */
+
+.bottom {
+margin-bottom: 20px;
+}
+
+.btn-main {
+color: #fff;
+background-color:  #56A1C7;
+border-color: #56A1C7;
+}
+
+.btn-main:hover {
+color: #56A1C7;
+background-color:  white;
+border-color: #56A1C7;
+}
+
+.text-muted {
+color: black !important;
+}
+
+.card-img-top {
+max-width: 100% !important;
+height: auto !important;
+display: block !important;
+}
+
+/* Github Corner */
+.github-corner:hover .octo-arm {
+animation:octocat-wave 560ms ease-in-out;
+}
+
+@keyframes octocat-wave {
+0%,100% {
+    transform: rotate(0);
+}
+
+20%,60% {
+    transform: rotate(-25deg);
+}
+
+40%,80% {
+    transform: rotate(10deg);
+}
+}
+
+@media (max-width:400px) {
+.github-corner:hover .octo-arm {
+    animation:none;
+}
+
+.github-corner .octo-arm{
+    animation:octocat-wave 560ms ease-in-out;
+}
+}

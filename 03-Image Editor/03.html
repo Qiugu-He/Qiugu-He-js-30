@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scoped CSS Variables and JS</title>
+</head>
+<body>
+  <h2>Update CSS Variables with JS</span></h2>
+
+  <div class="controls">
+    <label for="spacing">Spacing:</label>
+    <input type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+
+    <label for="blur">Blur:</label>
+    <input type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+
+    <label for="base">Base Color</label>
+    <input type="color" name="base" value="#8aa8af">
+	<br>
+	  
+  </div>
+
+  <img src="03.jpg" style="width:700px;height:350px;">
+
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway:wght@400;600&display=swap');
+    
+	  :root {
+		  --spacing: 11px;
+		  --blur: 5px;
+		  --base: #8aa8af;
+	  }
+	  
+	  img {
+		  padding: var(--spacing);
+		  background: var(--base);
+		  filter: blur(var(--blur));
+	  }
+	  
+	  .hl {
+		  color: var(--base);
+	  }
+
+	  
+    body {
+      text-align: center;
+    }
+
+    body {
+      background: #307EB3;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 100;
+      font-size: 1.5em;
+    }
+
+    .controls {
+      margin-bottom: 1em;
+    }
+
+    input {
+      width:100px;
+    }
+	  
+	  
+  </style>
+
+  <script>
+	  const inputs = document.querySelectorAll('.controls input');	  
+	  
+	  function handleUpdate() {
+		  const suffix = this.dataset.sizing || ''; // according to data-sizing to get parameter 
+		  document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix); // setting the value of page variables
+		  document.getElementById(`code-${this.name}`).innerText = this.value + suffix; // showing webpage value
+	  }
+	  
+	  inputs.forEach( input => input.addEventListener('change', handleUpdate));
+	  inputs.forEach( input => input.addEventListener('mousemove', handleUpdate)); // showing dynamic changes
+	  
+	  
+//	  The following are used for handle across browser issues
+//	  var EventUtil = {
+//		  addHandler : function(element, type, handler) {
+//			  if (element.addEventListener) {
+//				  element.addEventListener(type, handler, false);
+//			  } else if (element.attachEvent) {
+//				  element.attachEvent("on" + type, handler);
+//			  } else {
+//				  element["on" + type] = handler;
+//			  }
+//		  },
+//		  
+//		  removeHandler: function(element, type, handler) {
+//			  if (element.removeEventListener) {
+//				  element.removeEventListener(type, handler, false);
+//			  } else if (element.detachEvent) {
+//				  element.attachEvent("on" + type, handler);
+//			  } else {
+//				  element["on" + type] = null;
+//			  }
+//		  }
+//	  };
+//	  
+//	  if (!NodeList.prototype.forEach) {
+//    NodeList.prototype.forEach = function(fn, scope) {
+//        for(var i = 0, len = this.length; i < len; ++i) {
+//            fn.call(scope, this[i], i, this);
+//        }
+//    }
+//};
+//	  
+//	  inputs.forEach( input => EventUtil.addHandler(input, 'change', handleUpdate));
+//	  inputs.forEach( input => EventUtil.addHandler(input, 'mousemove', handleUpdate));
+	 
+	  
+  </script>
+
+</body>
+</html>
