@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array Cardio</title>
+</head>
+<body>
+  <p><em>Please open the Console to check the result!</em> 💁</p>
+  <script>
+
+    // ## Array Cardio Day 2
+    const people = [
+      { name: 'Wes', year: 1988 },
+      { name: 'Kait', year: 1986 },
+      { name: 'Irv', year: 1970 },
+      { name: 'Lux', year: 2015 }
+    ];
+
+    const comments = [
+      { text: 'Love this!', id: 523423 },
+      { text: 'Super good', id: 823423 },
+      { text: 'You are the best', id: 2039842 },
+      { text: 'Ramen is my fav food ever', id: 123523 },
+      { text: 'Nice Nice Nice!', id: 542328 }
+    ];
+
+     console.log(people);
+    /* 
+        array.some(): 
+        - tests whether at least one element in the array passes the test implemented by the 'provided function'. 
+        - It returns a Boolean value. 
+    */
+
+    //Array.prototype.some() // is at least one person 19?
+    const isOver19 = people.some(person => {
+        const theYear = (new Date()).getFullYear();
+        return theYear - person.year > 19;
+    });
+    console.log("\'some'\ function => At least on person is over 19? "+ isOver19);
+
+    /*
+       array.every():
+        - tests whether all elements in the array pass the test implemented by the 'provided function'. 
+        - It returns a Boolean value.
+    */
+
+    // Array.prototype.every() // is everyone 19?
+    const allOver19 = people.every(person =>{
+        const theYear = (new Date()).getFullYear();
+        return theYear - person.year > 19;
+    });
+    console.log("\'every'\ function => is every one over 19? "+ allOver19);
+
+
+    /*
+       array.find():
+        - returns the value of the first element in the provided array that satisfies the 'provided testing function'.
+    */
+    console.log(comments);
+    // Array.prototype.find()
+    // Find is like filter, but instead returns just the one you are looking for
+    // find the comment with the ID of 823423
+    const comment = comments.find(comment => comment.id == 823423);
+    console.log("\'find function\' => Find the comment with id: "+ comment);
+
+    /*
+       array.findIndex():
+        - returns the index of the first element in the array that satisfies the 'provided testing function'. 
+        - Otherwise, it returns -1, indicating that no element passed the test. 
+    */
+    // Array.prototype.findIndex()
+    // Find the comment with this ID, delete the comment with the ID of 823423
+    const index = comments.findIndex(comment => comment.id === 823423);
+    console.log("Find the comment 823423 at index: "+index);
+
+    console.log("Removed comment with id 823423"+comments.splice(index, 1));
+
+    console.log(comments);
+    // const newComments = [
+    //     ...comments.slice(0, index),
+    //     ...comments.slice(index+1)
+    // ];
+    /*
+       array.slice():
+        -  returns a shallow copy of a portion of an array into a new array object selected from start to end (end not included) 
+           where start and end represent the index of items in that array. The original array will not be modified.
+        
+       array.splice():
+        -  changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
+    */
+
+
+  </script>
+</body>
+</html>
